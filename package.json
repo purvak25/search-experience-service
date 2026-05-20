@@ -1,0 +1,24 @@
+{
+  "name": "search-experience-service",
+  "version": "1.0.0",
+  "description": "Production incident simulation repository for feature flag rollout failures",
+  "main": "src/search_handler.js",
+  "scripts": {
+    "start": "node src/search_handler.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/search-experience-service.git"
+  },
+  "keywords": [
+    "feature-flags",
+    "search",
+    "aws",
+    "backend",
+    "incident-simulation",
+    "rollout"
+  ],
+  "author": "Purva Kothekar",
+  "license": "MIT"
+}
