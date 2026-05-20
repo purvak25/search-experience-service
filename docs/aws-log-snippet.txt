@@ -1,0 +1,50 @@
+================================================================================
+AWS CloudWatch Logs - /aws/lambda/search-experience-prod
+================================================================================
+
+2024-07-11T10:04:18.112Z [SEARCH] Incoming search request received
+2024-07-11T10:04:18.113Z [FEATURE_FLAG] Evaluating new-search rollout flag
+2024-07-11T10:04:18.114Z [FEATURE_FLAG] featureFlagEnabled=false
+2024-07-11T10:04:18.115Z [SEARCH] New search experience enabled for request
+2024-07-11T10:04:19.422Z [ERROR] Search backend timeout after 3000ms
+
+Error: Search backend timeout
+    at processSearch (/var/task/src/search_handler.js:22:14)
+
+---
+
+2024-07-11T10:06:31.008Z [SEARCH] Incoming search request received
+2024-07-11T10:06:31.009Z [FEATURE_FLAG] featureFlagEnabled=false
+2024-07-11T10:06:31.010Z [SEARCH] New search experience enabled for request
+
+2024-07-11T10:06:32.553Z [ERROR] Failed to retrieve search results
+2024-07-11T10:06:32.554Z [ERROR] ElasticSearch request failed with status 503
+
+---
+
+2024-07-11T10:11:02.884Z [METRICS] New search exposure exceeded rollout threshold
+2024-07-11T10:11:02.885Z [METRICS] Expected rollout percentage: 5%
+2024-07-11T10:11:02.886Z [METRICS] Actual rollout percentage: 100%
+
+---
+
+2024-07-11T10:17:48.221Z [INVESTIGATION] Root cause identified in feature flag logic
+2024-07-11T10:17:48.222Z [INVESTIGATION] Feature flag condition incorrectly inverted
+
+Broken condition:
+if (!featureFlagEnabled)
+
+---
+
+2024-07-11T10:24:11.037Z [ROLLBACK] Feature exposure rollback initiated
+2024-07-11T10:24:11.038Z [ROLLBACK] Traffic shifting back to stable search backend
+
+---
+
+2024-07-11T10:36:52.914Z [DEPLOYMENT] Hotfix deployed successfully
+2024-07-11T10:36:52.915Z [DEPLOYMENT] Corrected feature flag condition active
+2024-07-11T10:36:52.916Z [DEPLOYMENT] Rollout percentage validation enabled
+
+================================================================================
+END LOG SNIPPET
+================================================================================
